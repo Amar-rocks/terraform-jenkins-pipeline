@@ -1,8 +1,9 @@
-resource "aws_instance" "public_instance" {
- ami           = var.ami
- instance_type = var.instance_type
-
- tags = {
-   Name = var.name_tag,
- }
+# Resource: EC2 Instance
+resource "aws_instance" "myec2vm" {
+  ami = "ami-0742b4e673072066f"
+  instance_type = "t3.micro"
+  user_data = file("$/app1-install.sh")
+  tags = {
+    "Name" = "EC2 Demo"
+  }
 }
